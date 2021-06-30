@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-
+// props will come from board name ,
+// new card from data will be linked to the board name selected 
+// this new card form will go to card container / all cards show up here
 const NewCardForm = (props) => {
     const [message, setMessage] = useState('');
 
@@ -24,12 +26,11 @@ const NewCardForm = (props) => {
     <form onSubmit={onSubmit} >
         <label>Message</label>
         <input name="message-input" id="message-input" value={message} onChange={onInputChange} />
-        <button>Submit</button>
+        {/*<button>Submit</button>*/}
         <input type="submit" />
     </form>
     )
 }
 
 
-// testing something out hfdjklsjd
 export default NewCardForm;
