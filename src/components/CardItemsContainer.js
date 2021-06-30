@@ -7,6 +7,8 @@ const CardItemsContainer = (props) => {
      
     const cardItems = props.cards.map((card) => {
      
+        console.log(`CardItemContainer card: ${card.message}`);
+
       return (
          <CardItem id={card.id} message={card.message} likeCount={card.likeCount}></CardItem>
        );
