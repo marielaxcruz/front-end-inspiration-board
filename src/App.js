@@ -7,7 +7,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <NewBoardForm/>
+        <NewBoardForm
+        //setBoards = {setBoards}
+        />
         <NewCardForm/>
       </header>
     </div>

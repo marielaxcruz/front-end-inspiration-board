@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 
 // props will come from board name ,
 // new card from data will be linked to the board name selected 
@@ -6,8 +8,10 @@ import React, { useState } from 'react';
 const NewCardForm = (props) => {
     const [message, setMessage] = useState('');
 
-    const onInputChange = (event) => {
-        console.log(event);
+    const BASE_URL = "https://localhost:5000";
+
+    const onCardChange = (event) => {
+        //console.log(event);
         console.log(event.target.name);
         setMessage(event.target.value);
     }
@@ -16,16 +20,25 @@ const NewCardForm = (props) => {
       // Prevent the browser submitting form
       // and reloading the page
         event.preventDefault();
-      // POST 'localhost:3000'
-        if (message !== '') {
-            props.onSubmitCallback(message);
+        console.log(message)
+        const requestBody = {
+        message: message
         }
+        console.log(requestBody);
+        axios.post(`${BASE_URL}/board/board_id/cards`, requestBody) 
+        .then((response)=>{
+            axios.get(`${BASE_URL}/boards/board_id/cards`).then((cardsResponse)=>{
+            const cards = cardsResponse.data
+            props.setCards(cards)       
+            })
+        })
+        console.log("New Card created")
     }
 
     return (
     <form onSubmit={onSubmit} >
         <label>Message</label>
-        <input name="message-input" id="message-input" value={message} onChange={onInputChange} />
+        <input name="message-input" id="message-input" value={message} onChange={onCardChange} />
         {/*<button>Submit</button>*/}
         <input type="submit" />
     </form>
@@ -34,3 +47,11 @@ const NewCardForm = (props) => {
 
 
 export default NewCardForm;
+
+
+
+// cards get updated every time board is selected
+// selected board component can be passed to card list
+//  card list will take board id and query all the cards of that board in order to create a list of card components
+// selected board, we have all their cards aka the student list 
+// selected board passes down a function to create a card form 
