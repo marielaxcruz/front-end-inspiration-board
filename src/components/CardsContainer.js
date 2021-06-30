@@ -12,15 +12,20 @@ const CardsContainer = (props) => {
     const allCardsForSelectedBoard = [
         {
             'id':1, 
-            'message': "test card",
+            'message': "test card 1",
             'likesCount': 2
+        },
+        {
+            'id':2, 
+            'message': "test card 2",
+            'likesCount': 5
         }
     ]; // props.allCardsForSelectedBoard
 
     return (
         <section class="cards__container">
             <section>
-                <h2>Cards for scissors</h2>
+                <h2>Cards for {props.boardName}</h2>
                 <CardItemsContainer cards={allCardsForSelectedBoard} />
             </section>
             <section class="new-card-form__container">

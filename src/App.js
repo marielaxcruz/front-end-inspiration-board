@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       {/* <BoardsContainer /> */}
-      <CardsContainer />
+      <CardsContainer boardName="sneha's board" />
     </div>
   );
 }
