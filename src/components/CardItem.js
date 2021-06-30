@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import PropTypes from 'prop-types';
 
 //import './CardItem.css'
 
 const CardItem = (props) => {
 
+    const [likesCountCurrentState, setLikeCounts] = useState(props.likeCount);
+
+    const BASE_URL = 'http://localhost:5000';
+
     const onClickCardItemDeleteCallback = (id, e) => {
-        console.log(`Card item ${id} delete button click`)
+        console.log(`Card item ${props.cardId} delete button click`);
+
     };
 
-    const onClickCardItemLikeCallback = (id, e) => {
-        console.log(`Card item ${id} like button click`)
+    const onClickCardItemLikeCallback = () => {
+        console.log(`Card item ${props.cardId} like button click`);
+
+        axios.put(`${BASE_URL}/board/${props.selectedBoardId}/cards/${props.cardId}`,
+        {}).then((response) => {
+            console.log(`card ${props.cardId} likesCount = ${response.data.likes_count}`);
+
+            setLikeCounts(response.data.likes_count);
+
+        }).catch((error)=>{
+            console.log("error updating likesCount:", error.response.data)
+        });
     };
 
     return (
@@ -18,7 +34,7 @@ const CardItem = (props) => {
         <p class="card-item__message">{props.message}</p>
         <ul class="card-item__controls">
         <li>
-            <p>{props.likeCount} 💕</p>
+            <p>{likesCountCurrentState} 💕</p>
         </li>
         <li>
             <button onClick={onClickCardItemLikeCallback}>+1</button>

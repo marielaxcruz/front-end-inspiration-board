@@ -28,8 +28,9 @@ const CardsContainer = (props) => {
 
             for(let i =0; i < response.data.length; i++)
             {
-                console.log(`${response.data[i].message}`);
-                console.log(`${response.data[i].likes_count}`);
+                console.log(`card id: ${response.data[i].card_id}`);
+                console.log(`card message: ${response.data[i].message}`);
+                console.log(`card likesCount: ${response.data[i].likes_count}`);
 
                 cardsList.push(
                     {
@@ -39,7 +40,6 @@ const CardsContainer = (props) => {
                     });
             }
 
-            cardsList = response.data;
             setCardList(cardsList);
 
         }).catch((error)=>{
@@ -74,7 +74,7 @@ const CardsContainer = (props) => {
         <section class="cards__container">
             <section>
                 <h2>Cards for {props.boardName}</h2>
-                <CardItemsContainer cards={cardListCurrentState} />
+                <CardItemsContainer selectedBoardId={props.selectedBoardId} cards={cardListCurrentState} />
             </section>
             <section class="new-card-form__container">
                 <h2>Create a New Card</h2>

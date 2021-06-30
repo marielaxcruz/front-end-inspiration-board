@@ -7,10 +7,10 @@ const CardItemsContainer = (props) => {
      
     const cardItems = props.cards.map((card) => {
      
-        console.log(`CardItemContainer card: ${card.message}`);
+        console.log(`CardItemContainer card ${card.id}: ${card.message}`);
 
       return (
-         <CardItem id={card.id} message={card.message} likeCount={card.likeCount}></CardItem>
+         <CardItem cardId={card.id} message={card.message} likeCount={card.likeCount} selectedBoardId={props.selectedBoardId}></CardItem>
        );
       });
     
