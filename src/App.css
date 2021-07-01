@@ -1,4 +1,26 @@
-.App {
+header {
+  background-color: yellow;
+  font-family: cursive;
+  padding: 0.6em 1em;
+  display: inline-block;
+  color: black;
+  font-weight: 800;
+  font-size: 36px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.allBoard {
+  max-height: 50%;
+  min-height: 50%;
+  overflow: scroll;
+  border: black dashed 1px;
+  margin-left: 15px;
+}
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +57,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
