@@ -5,11 +5,12 @@ import './App.css';
 
 function App() {
   
-  const [currentSelectedBoardId, setSelectedBoardId] = useState(-1);
+  const [currentSelectedBoardId, setSelectedBoardId] = useState(-1); // -1 is the initial state, not using 0 because 0 is a valid boardid
   
   return (
     <div className="App">
       {/* <BoardsContainer /> */}
+      {/* <CardsContainer boardName="Sneha's board" selectedBoardId={currentSelectedBoardId} /> */}
       <CardsContainer boardName="Sneha's board" selectedBoardId="1" />
     </div>
   );

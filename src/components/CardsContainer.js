@@ -63,6 +63,18 @@ const CardsContainer = (props) => {
           });
     };
 
+    const onCardDeleteCallback = (cardId) => {
+        axios.delete(`${BASE_URL}/board/${props.selectedBoardId}/cards/${cardId}`, {}
+        ).then((response) => {
+            console.log(response.data);
+            // call API to get the latest list of cards for selected board.
+            refreshCardsForSelectedBoard();
+          
+          }, (error) => {
+            console.log(error);
+          });
+    };
+
     useEffect(() => {
         // 
         refreshCardsForSelectedBoard();
@@ -74,7 +86,7 @@ const CardsContainer = (props) => {
         <section class="cards__container">
             <section>
                 <h2>Cards for {props.boardName}</h2>
-                <CardItemsContainer selectedBoardId={props.selectedBoardId} cards={cardListCurrentState} />
+                <CardItemsContainer selectedBoardId={props.selectedBoardId} cards={cardListCurrentState} onCardDeleteCallback={onCardDeleteCallback} />
             </section>
             <section class="new-card-form__container">
                 <h2>Create a New Card</h2>

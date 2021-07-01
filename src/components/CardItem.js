@@ -10,11 +10,6 @@ const CardItem = (props) => {
 
     const BASE_URL = 'http://localhost:5000';
 
-    const onClickCardItemDeleteCallback = (id, e) => {
-        console.log(`Card item ${props.cardId} delete button click`);
-
-    };
-
     const onClickCardItemLikeCallback = () => {
         console.log(`Card item ${props.cardId} like button click`);
 
@@ -40,7 +35,7 @@ const CardItem = (props) => {
             <button onClick={onClickCardItemLikeCallback}>+1</button>
         </li>
         <li>
-            <button class="card-item__delete" onClick={onClickCardItemDeleteCallback}>Delete</button>
+            <button class="card-item__delete" onClick={(e) => props.onCardDeleteCallback(props.cardId, e)}>Delete</button>
         </li>
         </ul>
     </div>

@@ -10,7 +10,7 @@ const CardItemsContainer = (props) => {
         console.log(`CardItemContainer card ${card.id}: ${card.message}`);
 
       return (
-         <CardItem cardId={card.id} message={card.message} likeCount={card.likeCount} selectedBoardId={props.selectedBoardId}></CardItem>
+         <CardItem cardId={card.id} message={card.message} likeCount={card.likeCount} selectedBoardId={props.selectedBoardId} onCardDeleteCallback={props.onCardDeleteCallback}></CardItem>
        );
       });
     
