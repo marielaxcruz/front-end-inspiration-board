@@ -15,7 +15,7 @@ function App() {
     //cards: [],
   });
 
-  useEffect(() => {
+  const fetchBoards = () => {
     axios
     .get(`${BASE_URL}`)
     .then((response) => {
@@ -23,21 +23,35 @@ function App() {
       setBoard(response.data)
     })
     .catch((err) => console.log(err));
-  }, []);
+  }
 
+  useEffect(() => {
+    fetchBoards()
+  }, []);
   //--------- update "selected board"
   const selectBoard = (board) => {
     setSelectedBoard(board)
     console.log('Currently selected board ', board)
   }
+  const onSubmitCallbackForNewBoard = (title,owner) => {
+    // call API to create card with provided message
+    axios.post(`${BASE_URL}`, {
+        title: title,
+        owner: owner
+      })
+      .then((response) => {
+        console.log(response.data, '!');
+        fetchBoards()
+      }, (error) => {
+        console.log(error);
+      });
+};
 
   return (
     <div className="App">
       <header className="App-header">
         INSPIRATION Board
-        <NewBoardForm
-        setBoard = {setBoard}
-        />
+        <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard} />
         <h2> cards </h2>
         <NewCardForm/>
       </header>
