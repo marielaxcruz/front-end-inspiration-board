@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import CardItemsContainer from './CardItemsContainer';
-import NewCardForm from './NewCardForm';
+import NewCardForm from './NewCardsForm';
 import axios from "axios";
 
-//import './CardsContainer.css'
+import './CardsContainer.css'
 
 const CardsContainer = (props) => {
     
@@ -28,9 +28,9 @@ const CardsContainer = (props) => {
 
             for(let i =0; i < response.data.length; i++)
             {
-                console.log(`card id: ${response.data[i].card_id}`);
-                console.log(`card message: ${response.data[i].message}`);
-                console.log(`card likesCount: ${response.data[i].likes_count}`);
+                //console.log(`card id: ${response.data[i].card_id}`);
+                //console.log(`card message: ${response.data[i].message}`);
+                //console.log(`card likesCount: ${response.data[i].likes_count}`);
 
                 cardsList.push(
                     {
@@ -41,6 +41,7 @@ const CardsContainer = (props) => {
             }
 
             setCardList(cardsList);
+            console.log(`this is card container with board id ${props.selectedBoardId}`)
 
         }).catch((error)=>{
             console.log("error getting list of card:", error.response.data)
@@ -50,7 +51,7 @@ const CardsContainer = (props) => {
     const onSubmitCallbackForNewCard = (messageText) => {
 
         // call API to create card with provided message
-        axios.post(`${BASE_URL}/board/1/cards`, {
+        axios.post(`${BASE_URL}/board/${props.selectedBoardId}/cards`, {
             message: messageText
           })
           .then((response) => {
@@ -78,7 +79,7 @@ const CardsContainer = (props) => {
     useEffect(() => {
         // 
         refreshCardsForSelectedBoard();
-    }, []);
+    }, [props.selectedBoardId]);
 
     //console.log(`cardListCurrentState: ${cardListCurrentState}`);
 

@@ -1,14 +1,8 @@
-
 import PropTypes from 'prop-types';
 import  React, { useState } from 'react';
+import './NewCardsForm.css'
 
-//import './NewCardForm.css'
 
-// const NewCardForm = (props) => {
-//     return (
-//         <div>New Card form renders here</div>
-//     );
-// }
 const NewCardForm = (props) => {
     const [message, setMessage] = useState('');
 

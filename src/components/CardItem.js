@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import PropTypes from 'prop-types';
 
-//import './CardItem.css'
+import './CardItem.css';
 
 const CardItem = (props) => {
 
