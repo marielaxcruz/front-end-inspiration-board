@@ -2,8 +2,9 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import BoardList from './components/BoardList';
-//import './BoardList.css';
-//import Board from './components/Board';
+import NewBoardForm from './components/NewBoardForm';
+import NewCardForm from './components/NewCardForm';
+
 
 function App() {
   const BASE_URL = 'http://localhost:5000/board';
@@ -27,14 +28,18 @@ function App() {
   //--------- update "selected board"
   const selectBoard = (board) => {
     setSelectedBoard(board)
-    //onBoardSelect={selectBoard}
     console.log('Currently selected board ', board)
   }
 
   return (
     <div className="App">
-      <header>
+      <header className="App-header">
         INSPIRATION Board
+        <NewBoardForm
+        setBoard = {setBoard}
+        />
+        <h2> cards </h2>
+        <NewCardForm/>
       </header>
       <main>
         <section className="container">
