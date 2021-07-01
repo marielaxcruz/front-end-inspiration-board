@@ -16,7 +16,7 @@ const NewBoardForm = (props) => {
     const onFormSubmit = (event) => {
       // Prevent the browser submitting form and reloading the page
         event.preventDefault();
-      // POST 'localhost:3000'
+        // POST 'localhost:3000'
         if (title !== '' && owner !== '') {
             props.onSubmitCallback(title, owner);}
     }
