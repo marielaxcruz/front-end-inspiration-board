@@ -17,8 +17,7 @@ const NewBoardForm = (props) => {
     }
     // Handling Form Submissions - event handler 
     const onFormSubmit = (event) => {
-      // Prevent the browser submitting form
-      // and reloading the page
+      // Prevent the browser submitting form and reloading the page
         event.preventDefault();
         console.log(title, owner)
         const requestBody = {

@@ -9,13 +9,14 @@ const NewCardForm = (props) => {
     const [message, setMessage] = useState('');
 
     const BASE_URL = "https://localhost:5000";
-
+// this function gets called when the user starts typing
     const onCardChange = (event) => {
         //console.log(event);
         console.log(event.target.name);
+        // get the field they are typing in 
         setMessage(event.target.value);
     }
-
+// this function will get called when the user submits 
     const onSubmit = (event) => {
       // Prevent the browser submitting form
       // and reloading the page
@@ -25,7 +26,8 @@ const NewCardForm = (props) => {
         message: message
         }
         console.log(requestBody);
-        axios.post(`${BASE_URL}/board/board_id/cards`, requestBody) 
+        axios.post(`${BASE_URL}/board/board_id/cards`, requestBody)
+        // call board to rerender to add the new board , I need to refresh the list 
         .then((response)=>{
             axios.get(`${BASE_URL}/boards/board_id/cards`).then((cardsResponse)=>{
             const cards = cardsResponse.data
@@ -38,9 +40,13 @@ const NewCardForm = (props) => {
     return (
     <form onSubmit={onSubmit} >
         <label>Message</label>
-        <input name="message-input" id="message-input" value={message} onChange={onCardChange} />
+        <input 
+        name="message-input" 
+        id="message-input" 
+        value={message} 
+        onChange={onCardChange} />
         {/*<button>Submit</button>*/}
-        <input type="submit" />
+        <input type="submit" value="Submit Card" />
     </form>
     )
 }
