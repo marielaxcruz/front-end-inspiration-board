@@ -17,7 +17,7 @@ const CardsContainer = (props) => {
         
         let cardsList = []
 
-        axios.get(`${BASE_URL}/board/${props.selectedBoardId}/cards`,
+        axios.get(`${BASE_URL}/board/${props.selectedBoardId}/cards?sort=desc`,
         {
                 params: {
                     format: "json",
