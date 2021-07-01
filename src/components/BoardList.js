@@ -15,6 +15,7 @@ const BoardList = (props) => {
     }
     return (
         <section>
+            
             {/* <h3 className="forBoards change">Boards</h3> */}
             {mapAll()}
         </section>
