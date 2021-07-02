@@ -86,7 +86,7 @@ const CardsContainer = (props) => {
     return (
         <section class="cards__container">
             <section>
-                <h2>Cards for {props.boardName}</h2>
+                <h2>Cards for {props.boardName}</h2> {/*Header goes here*/}
                 <CardItemsContainer selectedBoardId={props.selectedBoardId} cards={cardListCurrentState} onCardDeleteCallback={onCardDeleteCallback} />
             </section>
             <section class="new-card-form__container">
