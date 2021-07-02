@@ -94,7 +94,7 @@ function App() {
             <p>{selectedBoard.title} - {selectedBoard.owner}</p>
         </section>
         <button className= "deleteButton"
-          onClick={() => {onBoardDelete(selectedBoard.id)}}> Delete Board</button>
+          onClick={() => {onBoardDelete(selectedBoard.board_id)}}> Delete Board</button>
         <section>
           {newBoardFormDisplay ? <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard}></NewBoardForm> : ""}
           <div onClick={hideNewBoardForm}>{newBoardFormDisplay ? "Hide Form" : "Show Form"}</div>
@@ -103,7 +103,6 @@ function App() {
         <CardsContainer boardName={selectedBoard.title} selectedBoardId={selectedBoard.board_id} />
         </div>
         </main>
-        <footer> © M.A.G.S Team</footer>
     </div>
   );
 }
