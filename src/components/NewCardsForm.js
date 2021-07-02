@@ -1,27 +1,31 @@
 import PropTypes from 'prop-types';
-import  React, { useState } from 'react';
+import  React, { useState, useEffect } from 'react';
 import './NewCardsForm.css'
 
 
 const NewCardForm = (props) => {
     const [message, setMessage] = useState('');
-    const [submitButtonDisableState, setSubmitButtonDisableState] = useState("disabled");
+    const [submitButtonDisableState, setSubmitButtonDisableState] = useState(false);
 
     const onInputChange = (event) => {
-        // console.log(event);
-        // console.log(event.target.name);
+        setMessage(event.target.value);
+    }
 
-        const messageText = event.target.value;
-        
-        if (messageText.length > 5 || messageText.length === 0){
+    useEffect(() => {
+
+        updateSubmitButtonState(message);
+
+    }, [message]);
+
+    const updateSubmitButtonState = (message) => {
+        if (message.length > 40 || message.length === 0){
             setSubmitButtonDisableState(true);
         }
         else{
             setSubmitButtonDisableState(false);
         }
+    };
 
-        setMessage(event.target.value);
-    }
 
     const onSubmit = (event) => {
       // Prevent the browser submitting form
@@ -31,6 +35,8 @@ const NewCardForm = (props) => {
         if (message !== '') {
             props.onSubmitCallback(message);
         }
+
+        setMessage('');
     }
 
     return (
