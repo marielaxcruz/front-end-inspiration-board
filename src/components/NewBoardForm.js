@@ -1,12 +1,9 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-
-// next step is the board list 
-// props are 
+// next step is the board list
+// props are
 const NewBoardForm = (props) => {
     const [title, setTitle] = useState('');
     const [owner, setOwner] = useState('');
-
     const BASE_URL = "https://localhost:5000/board";
 // onTitleChange takes in one argument, event, which we expect to be information about the event that triggers our event handler.
     const onTitleChange = (event) => {
@@ -15,7 +12,7 @@ const NewBoardForm = (props) => {
     const onOwnerChange = (event) => {
         setOwner(event.target.value);
     }
-    // Handling Form Submissions - event handler 
+    // Handling Form Submissions - event handler
     const onFormSubmit = (event) => {
       // Prevent the browser submitting form and reloading the page
         event.preventDefault();
@@ -23,7 +20,6 @@ const NewBoardForm = (props) => {
         if (title !== '' && owner !== '') {
             props.onSubmitCallback(title, owner);}
     }
-
     return (
     <form onSubmit={onFormSubmit} >
         <label>Title</label>
@@ -36,9 +32,7 @@ const NewBoardForm = (props) => {
     </form>
     )
 };
-
-export default NewBoardForm; 
-
+export default NewBoardForm;
 // After hitting Submit, the board list gets updated 
 // board form - takes in form data and sends it back to app 
 // app will re render and display the newly added board 
