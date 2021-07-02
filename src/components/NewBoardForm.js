@@ -4,6 +4,8 @@ import './NewBoardForm.css'
 
 // next step is the board list 
 // props are 
+// next step is the board list
+// props are
 const NewBoardForm = (props) => {
     const [title, setTitle] = useState('');
     const [owner, setOwner] = useState('');
@@ -20,7 +22,7 @@ const NewBoardForm = (props) => {
         setOwner(event.target.value);
         //updateSubmitButtonState(owner, title);
     }
-    // Handling Form Submissions - event handler 
+    // Handling Form Submissions - event handler
     const onFormSubmit = (event) => {
       // Prevent the browser submitting form and reloading the page
         event.preventDefault();
@@ -62,14 +64,13 @@ const NewBoardForm = (props) => {
         <input class={inputCssClass} name="owner-input" id="owner-input" value={owner} onChange={onOwnerChange} />
         {/*<button>Submit</button>*/}
         {/*<input type="submit" />*/}
-        <button disabled={submitButtonDisableState} class="new-board-form__form-submit-btn" onClick={onFormSubmit}>Create New Board</button>
+        <button disabled={submitButtonDisableState} className= "submitButton" onClick={onFormSubmit}>Create New Board</button>
+        
     </form>
     
     )
 };
-
-export default NewBoardForm; 
-
+export default NewBoardForm;
 // After hitting Submit, the board list gets updated 
 // board form - takes in form data and sends it back to app 
 // app will re render and display the newly added board 

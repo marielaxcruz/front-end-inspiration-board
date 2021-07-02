@@ -43,8 +43,8 @@ const CardsContainer = (props) => {
             setCardList(cardsList);
             console.log(`this is card container with board id ${props.selectedBoardId}`)
 
-        }).catch((error)=>{
-            console.log("error getting list of card:", error.response.data)
+        //}).catch((error)=>{
+        //    console.log("error getting list of card:", error.response.data)
         });
     }
 

@@ -1,12 +1,12 @@
-.new-card-form__container {
+/* .new-card-form__container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: "Permanent Marker", cursive;
+    font-family: Gill Sans, sans-serif;
     padding: 0.6em 1em;
     display: inline-block;
     color: black;
-    }
+    } */
 
 .filled-message{
     outline-color: rgb(0, 103, 244);
@@ -30,4 +30,9 @@
     border-right-style: solid;
     border-right-width: 1px;
     border-top-color: rgb(255, 0, 0);
+    color: black;
+    }
+
+.submitButton{
+    background-color: pink;
 }

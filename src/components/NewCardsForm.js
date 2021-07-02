@@ -52,7 +52,8 @@ const NewCardForm = (props) => {
         <label>Message</label>
         <input class={messageCssClass} name="message-input" id="message-input" value={message} onChange={onInputChange} />
         {/*<button>Submit</button>*/}
-        <input type="submit" disabled={submitButtonDisableState}/>
+        <input type="submit" className= "submitButton" disabled={submitButtonDisableState}/>
+        
     </form>
     )
 }
