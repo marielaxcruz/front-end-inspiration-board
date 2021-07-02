@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import CardsContainer from './components/CardsContainer';
-import logo from './logo.svg';
 import './App.css';
 // -----------------------------AIDA----------------------------
 import { useEffect } from 'react';
@@ -18,17 +17,8 @@ function App() {
     title: '',
     owner: '',
     board_id: -1
-    //cards: [],
   });
-  //Sneha--
-  // const [currentSelectedBoardId, setSelectedBoardId] = useState(-1); // -1 is the initial state, not using 0 because 0 is a valid boardid
-  // const [currentBoardName, setBoardName] = useState("");
-
-  // const onBoardSelectedCallback = (selectedBoardId, selectedBoardName) => {
-  //   // Set the state for the selected board so the CardContainer can use it to behave correctly.
-  //   setBoardName(selectedBoardName);
-  //   setSelectedBoardId(selectedBoardId);
-  // };
+  const [newBoardFormDisplay, setNewBoardFormDisplay] = useState(true)
 
   const fetchBoards = () => {
     axios
@@ -40,6 +30,8 @@ function App() {
     .catch((err) => console.log(err));
   }
 
+  const hideNewBoardForm = () => { setNewBoardFormDisplay(!newBoardFormDisplay) }
+
   useEffect(() => {
     fetchBoards()
   }, []);
@@ -48,7 +40,6 @@ function App() {
   const selectBoard = (board) => {
     setSelectedBoard(board)
     console.log('Currently selected board ', board)
-    //refreshCardsForSelectedBoard();
   }
   const onSubmitCallbackForNewBoard = (title,owner) => {
     // call API to create card with provided message
@@ -68,9 +59,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         INSPIRATION Board
-        <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard} />
-        {/* <h2> cards </h2> */}
-        {/* <NewCardForm/> */}
       </header>
       <main>
         <section className="container">
@@ -87,7 +75,10 @@ function App() {
             <h2>Selected Board</h2>
             <p>{selectedBoard.title} - {selectedBoard.owner}</p>
         </section>
-    
+        <section>
+          {newBoardFormDisplay ? <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard}></NewBoardForm> : ""}
+          <div onClick={hideNewBoardForm}>{newBoardFormDisplay ? "Hide Form" : "Show Form"}</div>
+        </section>
       <div>
         <CardsContainer boardName={selectedBoard.title} selectedBoardId={selectedBoard.board_id} />
         </div>
