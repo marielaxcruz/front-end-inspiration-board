@@ -76,34 +76,30 @@ function App() {
       </header>
       <main>
         <section className="container">
-          <section>
-            <h3 className="forBoards change">Boards</h3>
-            <section className="allBoard">
-            <BoardList 
-            board={board}
-            onSelectBoardCallBack={selectBoard} />
+          <section className="boards_container">
+            <div className="forBoards change">Boards</div>
+              <section className="allBoards">
+                <BoardList 
+                board={board}
+                onSelectBoardCallBack={selectBoard} />
+              </section>
+              <section>
+                <h2 className="forSingleBoard change">Selected Board</h2>
+                <p>{selectedBoard.title} - {selectedBoard.owner}</p>
+              </section>
+              <section className="new_board">
+                <h2 className="forCreateBoard change">Create a new board</h2>
+                {newBoardFormDisplay ? <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard}></NewBoardForm> : ""}
+                <div className="hideForm" onClick={hideNewBoardForm}>{newBoardFormDisplay ? "Hide Form" : "Show Form"}</div>
+                <button className= "deleteButton"
+                  onClick={() => {onBoardDelete(selectedBoard.id)}}> Delete Board</button>
+              </section>
+              <section className="new_card">
+                <CardsContainer boardName={selectedBoard.title} selectedBoardId={selectedBoard.board_id} />
+              </section>
           </section>
         </section>
-        <section>
-          <h3> Create a New Board</h3>
-        <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard} />
-        </section>
-        </section>
-        <section>
-            <h2>Selected Board</h2>
-            <p>{selectedBoard.title} - {selectedBoard.owner}</p>
-        </section>
-        <button className= "deleteButton"
-          onClick={() => {onBoardDelete(selectedBoard.id)}}> Delete Board</button>
-        <section>
-          {newBoardFormDisplay ? <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard}></NewBoardForm> : ""}
-          <div onClick={hideNewBoardForm}>{newBoardFormDisplay ? "Hide Form" : "Show Form"}</div>
-        </section>
-      <div>
-        <CardsContainer boardName={selectedBoard.title} selectedBoardId={selectedBoard.board_id} />
-        </div>
         </main>
-        <footer> © M.A.G.S Team</footer>
     </div>
   );
 }
