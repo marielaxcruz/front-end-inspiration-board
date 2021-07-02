@@ -25,15 +25,16 @@ const NewBoardForm = (props) => {
     }
 
     return (
-    <form onSubmit={onFormSubmit} >
+    <form class="new-board-form__form" onSubmit={onFormSubmit} >
         <label>Title</label>
-        <input name="title-input" id="title-input" value={title} onChange={onTitleChange} />
+        <input type="text" class="invalid-form-input" name="title-input" id="title-input" value={title} onChange={onTitleChange} />
         <label>Owner's Name </label>
         <input name="owner-input" id="owner-input" value={owner} onChange={onOwnerChange} />
         {/*<button>Submit</button>*/}
         {/*<input type="submit" />*/}
-        <button onClick={onFormSubmit}>Create New Board</button>
+        <button class="new-board-form__form-submit-btn" onClick={onFormSubmit}>Create New Board</button>
     </form>
+    
     )
 };
 
