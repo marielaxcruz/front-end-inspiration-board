@@ -6,6 +6,7 @@ import './NewCardsForm.css'
 const NewCardForm = (props) => {
     const [message, setMessage] = useState('');
     const [submitButtonDisableState, setSubmitButtonDisableState] = useState(false);
+    const [messageCssClass, setMessageCssClass] = useState("empty-message");
 
     const onInputChange = (event) => {
         setMessage(event.target.value);
@@ -14,6 +15,13 @@ const NewCardForm = (props) => {
     useEffect(() => {
 
         updateSubmitButtonState(message);
+
+        if (message.length > 0){
+            setMessageCssClass("filled-message");
+        }
+        else{
+            setMessageCssClass("empty-message");
+        }
 
     }, [message]);
 
@@ -42,7 +50,7 @@ const NewCardForm = (props) => {
     return (
     <form onSubmit={onSubmit} >
         <label>Message</label>
-        <input name="message-input" id="message-input" value={message} onChange={onInputChange} />
+        <input class={messageCssClass} name="message-input" id="message-input" value={message} onChange={onInputChange} />
         {/*<button>Submit</button>*/}
         <input type="submit" disabled={submitButtonDisableState}/>
     </form>

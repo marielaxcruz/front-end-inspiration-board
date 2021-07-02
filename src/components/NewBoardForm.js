@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import './NewBoardForm.css'
 
 // next step is the board list 
 // props are 
@@ -7,6 +8,7 @@ const NewBoardForm = (props) => {
     const [title, setTitle] = useState('');
     const [owner, setOwner] = useState('');
     const [submitButtonDisableState, setSubmitButtonDisableState] = useState(true);
+    const [inputCssClass, setInputCssClass] = useState("empty-inputs");
 
     const BASE_URL = "https://localhost:5000/board";
 // onTitleChange takes in one argument, event, which we expect to be information about the event that triggers our event handler.
@@ -34,6 +36,13 @@ const NewBoardForm = (props) => {
 
         updateSubmitButtonState(owner, title);
 
+        if (owner.length > 0 && title.length > 0){
+            setInputCssClass("filled-inputs");
+        }
+        else{
+            setInputCssClass("empty-inputs");
+        }
+
     }, [owner, title]);
 
     const updateSubmitButtonState = (owner, title) => {
@@ -48,9 +57,9 @@ const NewBoardForm = (props) => {
     return (
     <form class="new-board-form__form" onSubmit={onFormSubmit} >
         <label>Title</label>
-        <input type="text" class="invalid-form-input" name="title-input" id="title-input" value={title} onChange={onTitleChange} />
+        <input class={inputCssClass} type="text" class="invalid-form-input" name="title-input" id="title-input" value={title} onChange={onTitleChange} />
         <label>Owner's Name </label>
-        <input name="owner-input" id="owner-input" value={owner} onChange={onOwnerChange} />
+        <input class={inputCssClass} name="owner-input" id="owner-input" value={owner} onChange={onOwnerChange} />
         {/*<button>Submit</button>*/}
         {/*<input type="submit" />*/}
         <button disabled={submitButtonDisableState} class="new-board-form__form-submit-btn" onClick={onFormSubmit}>Create New Board</button>
