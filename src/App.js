@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import CardsContainer from './components/CardsContainer';
 import './App.css';
-// -----------------------------AIDA----------------------------
 import { useEffect } from 'react';
 import axios from "axios";
 import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
-//import NewCardForm from './components/NewCardForm';
-
 
 function App() {
-
   const BASE_URL = 'http://localhost:5000/board';
   const [board, setBoard] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
@@ -34,13 +30,31 @@ function App() {
 
   useEffect(() => {
     fetchBoards()
-  }, []);
+  }, [selectedBoard.board_id]);
 
   //--------- update "selected board"
   const selectBoard = (board) => {
     setSelectedBoard(board)
     console.log('Currently selected board ', board)
-  }
+    //refreshCardsForSelectedBoard();
+  };
+
+  // deleting one specific board
+  const onBoardDelete =(board_id) => {
+    axios.delete(`${BASE_URL}/${selectedBoard.board_id}`).then((response) => {
+      console.log(response.data);
+      fetchBoards();
+      setSelectedBoard(
+        selectBoard.title = "",
+        selectBoard.owner = ""
+      )
+  }).catch((error) => {
+      console.log('Error:', error);
+      alert('Couldn\'t delete the board.');
+  });
+
+};
+
   const onSubmitCallbackForNewBoard = (title,owner) => {
     // call API to create card with provided message
     axios.post(`${BASE_URL}`, {
@@ -58,7 +72,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        INSPIRATION Board
+        <h1> ✨ 🌟 ✨ 🌟 Inspiration Board 🌟 ✨ 🌟 ✨ </h1>
       </header>
       <main>
         <section className="container">
@@ -75,6 +89,8 @@ function App() {
             <h2>Selected Board</h2>
             <p>{selectedBoard.title} - {selectedBoard.owner}</p>
         </section>
+        <button className= "deleteButton"
+          onClick={() => {onBoardDelete(selectedBoard.id)}}> Delete Board</button>
         <section>
           {newBoardFormDisplay ? <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard}></NewBoardForm> : ""}
           <div onClick={hideNewBoardForm}>{newBoardFormDisplay ? "Hide Form" : "Show Form"}</div>
@@ -83,6 +99,7 @@ function App() {
         <CardsContainer boardName={selectedBoard.title} selectedBoardId={selectedBoard.board_id} />
         </div>
         </main>
+        <footer> © M.A.G.S Team</footer>
     </div>
   );
 }
