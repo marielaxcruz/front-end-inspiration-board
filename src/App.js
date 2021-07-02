@@ -42,14 +42,30 @@ function App() {
 
   useEffect(() => {
     fetchBoards()
-  }, []);
+  }, [selectedBoard.board_id]);
 
   //--------- update "selected board"
   const selectBoard = (board) => {
     setSelectedBoard(board)
     console.log('Currently selected board ', board)
     //refreshCardsForSelectedBoard();
-  }
+  };
+
+  // deleting one specific board
+  const onBoardDelete =(board_id) => {
+    axios.delete(`${BASE_URL}/${selectedBoard.board_id}`).then((response) => {
+      console.log(response.data);
+      fetchBoards();
+      setSelectedBoard(
+        selectBoard.title = "",
+        selectBoard.owner = ""
+      )
+  }).catch((error) => {
+      console.log('Error:', error);
+      alert('Couldn\'t delete the board.');
+  });
+
+};
 
   const onSubmitCallbackForNewBoard = (title,owner) => {
     // call API to create card with provided message
@@ -68,8 +84,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        INSPIRATION Board
-        <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard} />
+        <h1> ✨ 🌟 ✨ 🌟 Inspiration Board 🌟 ✨ 🌟 ✨ </h1>
         {/* <h2> cards </h2> */}
         {/* <NewCardForm/> */}
       </header>
@@ -83,16 +98,21 @@ function App() {
             onSelectBoardCallBack={selectBoard} />
           </section>
         </section>
+        <section>
+        <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard} />
+        </section>
         </section>
         <section>
             <h2>Selected Board</h2>
             <p>{selectedBoard.title} - {selectedBoard.owner}</p>
         </section>
-    
+        <button className= "deleteButton"
+          onClick={() => {onBoardDelete(selectedBoard.id)}}> Delete Board</button>
       <div>
         <CardsContainer boardName={selectedBoard.title} selectedBoardId={selectedBoard.board_id} />
         </div>
         </main>
+        <footer> © M.A.G.S Team</footer>
     </div>
   );
 }
