@@ -1,9 +1,13 @@
 .new-card-form__container {
-    display: flex;
+    /*display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: "Permanent Marker", cursive;
+    font-family: Gill Sans, sans-serif;
     padding: 0.6em 1em;
     display: inline-block;
-    color: black;
+    color: black;*/
     }
+
+.submitButton{
+    background-color: pink;
+}

@@ -19,6 +19,16 @@ header {
 }
 .deleteButton{
   background: pink;
+  font-weight: bold;
+  font-family: Gill Sans, sans-serif;
+  border-radius:15px;
+  border:2px solid white;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Verdana;
+  font-size:12px;
+  padding:10px 20px;
 }
 
 .container {
