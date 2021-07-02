@@ -99,6 +99,7 @@ function App() {
           </section>
         </section>
         <section>
+          <h3> Create a New Board</h3>
         <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard} />
         </section>
         </section>

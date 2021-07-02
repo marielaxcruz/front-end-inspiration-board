@@ -27,7 +27,7 @@ const NewCardForm = (props) => {
         <label>Message</label>
         <input name="message-input" id="message-input" value={message} onChange={onInputChange} />
         {/*<button>Submit</button>*/}
-        <input type="submit" />
+        <input className= "submitButton" type="submit" />
     </form>
     )
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import './NewBoardForm.css';
 
 // next step is the board list 
 // props are 
@@ -32,7 +33,7 @@ const NewBoardForm = (props) => {
         <input name="owner-input" id="owner-input" value={owner} onChange={onOwnerChange} />
         {/*<button>Submit</button>*/}
         {/*<input type="submit" />*/}
-        <button onClick={onFormSubmit}>Create New Board</button>
+        <button className= "submitButton" onClick={onFormSubmit}>Create New Board</button>
     </form>
     )
 };
