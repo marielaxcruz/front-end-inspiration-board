@@ -7,3 +7,7 @@
     height: 445.78125px;
     width: 422px;
 }
+
+.h2{
+    -webkit-font-smoothing: antialiased;
+}
