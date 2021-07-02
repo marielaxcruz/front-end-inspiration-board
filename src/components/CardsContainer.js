@@ -86,11 +86,11 @@ const CardsContainer = (props) => {
     return (
         <section class="cards__container">
             <section>
-                <h2>Cards for {props.boardName}</h2> {/*Header goes here*/}
+                <h2 className="forCardContainer">Cards for {props.boardName}</h2> {/*Header goes here*/}
                 <CardItemsContainer selectedBoardId={props.selectedBoardId} cards={cardListCurrentState} onCardDeleteCallback={onCardDeleteCallback} />
             </section>
             <section class="new-card-form__container">
-                <h2>Create a New Card</h2>
+                <h2 className="forCreateCard">Create a New Card</h2>
                 <NewCardForm onSubmitCallback={onSubmitCallbackForNewCard} />
             </section>
         </section>

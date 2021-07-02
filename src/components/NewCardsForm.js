@@ -1,16 +1,39 @@
 import PropTypes from 'prop-types';
-import  React, { useState } from 'react';
+import  React, { useState, useEffect } from 'react';
 import './NewCardsForm.css'
 
 
 const NewCardForm = (props) => {
     const [message, setMessage] = useState('');
+    const [submitButtonDisableState, setSubmitButtonDisableState] = useState(false);
+    const [messageCssClass, setMessageCssClass] = useState("empty-message");
 
     const onInputChange = (event) => {
-        console.log(event);
-        console.log(event.target.name);
         setMessage(event.target.value);
     }
+
+    useEffect(() => {
+
+        updateSubmitButtonState(message);
+
+        if (message.length > 0){
+            setMessageCssClass("filled-message");
+        }
+        else{
+            setMessageCssClass("empty-message");
+        }
+
+    }, [message]);
+
+    const updateSubmitButtonState = (message) => {
+        if (message.length > 40 || message.length === 0){
+            setSubmitButtonDisableState(true);
+        }
+        else{
+            setSubmitButtonDisableState(false);
+        }
+    };
+
 
     const onSubmit = (event) => {
       // Prevent the browser submitting form
@@ -20,14 +43,17 @@ const NewCardForm = (props) => {
         if (message !== '') {
             props.onSubmitCallback(message);
         }
+
+        setMessage('');
     }
 
     return (
     <form onSubmit={onSubmit} >
         <label>Message</label>
-        <input name="message-input" id="message-input" value={message} onChange={onInputChange} />
+        <input class={messageCssClass} name="message-input" id="message-input" value={message} onChange={onInputChange} />
         {/*<button>Submit</button>*/}
-        <input type="submit" />
+        <input type="submit" className= "submitButton" disabled={submitButtonDisableState}/>
+        
     </form>
     )
 }

@@ -90,7 +90,7 @@ function App() {
               <section className="new_board">
                 <h2 className="forCreateBoard change">Create a new board</h2>
                 {newBoardFormDisplay ? <NewBoardForm onSubmitCallback={onSubmitCallbackForNewBoard}></NewBoardForm> : ""}
-                <div onClick={hideNewBoardForm}>{newBoardFormDisplay ? "Hide Form" : "Show Form"}</div>
+                <div className="hideForm" onClick={hideNewBoardForm}>{newBoardFormDisplay ? "Hide Form" : "Show Form"}</div>
                 <button className= "deleteButton"
                   onClick={() => {onBoardDelete(selectedBoard.id)}}> Delete Board</button>
               </section>
@@ -100,7 +100,6 @@ function App() {
           </section>
         </section>
         </main>
-        
     </div>
   );
 }
