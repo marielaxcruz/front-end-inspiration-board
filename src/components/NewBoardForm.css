@@ -1,14 +1,15 @@
-/* .new-board-form__form{
+.new-board-form__form{
     -webkit-font-smoothing: antialiased;
     color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     font-family: "Open Sans", sans-serif;
-    height: 172px;
-    margin-bottom: 32px;
+    height: 150px;
+    /* margin-bottom: 32px; */
     margin-top: 0px;
     width: 208.328125px;
-} */
+    padding-left: 60px;
+} 
 
 .filled-inputs{
     outline-color: rgb(0, 103, 244);
