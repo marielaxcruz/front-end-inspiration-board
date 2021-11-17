@@ -15,7 +15,7 @@ function App() {
     board_id: -1
   });
   const [newBoardFormDisplay, setNewBoardFormDisplay] = useState(true)
-
+// getting boards
   const fetchBoards = () => {
     axios
     .get(`${BASE_URL}`)
