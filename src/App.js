@@ -7,7 +7,7 @@ import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
 
 function App() {
-  const BASE_URL = 'http://localhost:5000/board';
+  const BASE_URL = 'https://inspiration-board.herokuapp.com/board';
   const [board, setBoard] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
     title: '',
